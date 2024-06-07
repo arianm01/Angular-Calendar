@@ -1,0 +1,31 @@
+<mat-card class="calendar">
+  <div class="calendar-header">
+    <button mat-icon-button (click)="previousMonth()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span>{{ monthNames()[currentMonth()] }} {{ currentYear() }}</span>
+    <button mat-icon-button (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+  <div class="calendar-body">
+    <div class="calendar-week">
+      <div *ngFor="let day of daysOfWeek()">{{ day }}</div>
+    </div>
+    <div class="calendar-week" *ngFor="let week of weeks()">
+      <div *ngFor="let day of week" [ngClass]="{'selected': isSelected(day), 'today': isToday(day)}"
+           (click)="selectDate(day)">
+        {{ day }}
+      </div>
+    </div>
+  </div>
+  <div class="calendar-footer">
+    <mat-form-field>
+      <mat-label>Locale</mat-label>
+      <mat-select (selectionChange)="toggleLocale($event)" [(value)]="calendarLocale">
+        <mat-option [value]="CalendarModel.Gregorian">{{ CalendarModel.Gregorian }}</mat-option>
+        <mat-option [value]="CalendarModel.Jalali">{{ CalendarModel.Jalali }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-card>
