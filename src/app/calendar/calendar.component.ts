@@ -12,7 +12,6 @@ import {
   jalaliDaysOfWeek,
   jalaliMonthNames
 } from "./calendar.model";
-import {DateConversionPipe} from "../pipes/date-conversion.pipe";
 
 @Component({
   selector: 'app-calendar',
@@ -23,7 +22,6 @@ import {DateConversionPipe} from "../pipes/date-conversion.pipe";
     MatSelectModule,
     MatCardModule,
     MatIconModule,
-    DateConversionPipe,
   ],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
