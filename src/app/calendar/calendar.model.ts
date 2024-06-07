@@ -1,4 +1,4 @@
-export enum CalendarModel {
+export enum CalendarType {
   Jalali = 'Jalali',
   Gregorian = 'Gregorian'
 }

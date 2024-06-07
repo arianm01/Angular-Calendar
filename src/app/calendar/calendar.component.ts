@@ -6,7 +6,7 @@ import {MatSelectChange, MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {
-  CalendarModel,
+  CalendarType,
   gregorianDaysOfWeek,
   gregorianMonthNames,
   jalaliDaysOfWeek,
@@ -27,13 +27,13 @@ import {
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
-  protected readonly CalendarModel = CalendarModel;
+  protected readonly CalendarModel = CalendarType;
 
   // Signals for current year, month, weeks and locale
   protected currentYear = signal(new Date().getFullYear());
   protected currentMonth = signal(new Date().getMonth());
   protected weeks = signal<(number | null)[][]>([]);
-  protected calendarLocale = signal(CalendarModel.Gregorian);
+  protected calendarLocale = signal(CalendarType.Gregorian);
 
   // Signals for days of week and month names based on the locale
   protected daysOfWeek = signal(gregorianDaysOfWeek);
@@ -178,7 +178,7 @@ export class CalendarComponent implements OnInit {
 
   // Method to check if the current locale is Gregorian
   private isGregorian(): boolean {
-    return this.calendarLocale() === CalendarModel.Gregorian;
+    return this.calendarLocale() === CalendarType.Gregorian;
   }
 
   selectDate(date: number | null) {
